@@ -63,10 +63,22 @@ function addFinishButton(){
     }
 }
 
-document.getElementById('footer').addEventListener('click', writeJSON);
+document.getElementById('footer').addEventListener('click', collectData);
+
+function collectData(){
+    collection = "";
+    for(i=0;i<daysOfWeekArray.length;i++){
+        adding = JSON.stringify({
+            "day": document.getElementById('day' + i).textContent,
+            "recipe": document.getElementById('selectDay' + i).value
+        });
+        collection += adding;
+    }       
+    postJSON(collection);
+}
 
 //write JSON files for day of the week and chosen recipe
-function writeJSON(){
+function postJSON(data){
        
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
@@ -79,13 +91,12 @@ function writeJSON(){
     xhr.setRequestHeader("Content-Type", "application/json");
 
     // Converting JSON data to string
-    var data = JSON.stringify({ 
-        "name": "Snoopy", 
-        "email": "Europese zwarte kortharige" 
+    var dataDone = JSON.stringify({ 
+        data
     });
 
     // Sending data with the request
-    xhr.send(data);
+    xhr.send(dataDone);
 }
     // if (document.getElementById('tableWeekSchedule')){
     //     for(i=0;i<daysOfWeekArray.length;i++){
