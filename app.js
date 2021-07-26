@@ -23,6 +23,11 @@ app.listen(3000, function () {
 });
 
 function writeJSON(data){
+    //if folder 'database' doesn't exist, make it.
+    if (!fs.existsSync(__dirname + '/database')){
+        fs.mkdirSync('./database');
+    }
+    //write weekschedule file
     const dataFinished = JSON.stringify(data);
     fs.writeFile(__dirname + '/database/weekSchedule.json', dataFinished, (err) => {
         if (err) {
