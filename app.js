@@ -12,10 +12,18 @@ app.use('/', express.static(__dirname + '/public'));
 //     res.sendFile(__dirname + "/styles.css");
 // });
 
+app.get('/getData', function(req, res) {
+    fs.readFile(__dirname + '/database/weekSchedule.json', function (err, fileResp){
+        res.setHeader('Content-type', 'application/json');
+        res.send(JSON.parse(fileResp));
+        console.log(JSON.parse(fileResp));
+    });
+});
+
 app.post('/', function(req, res) {
-    var dog = req.body;
-    console.log(dog);
-    writeJSON(dog);
+    var rawData = req.body;
+    console.log(rawData);
+    writeJSON(rawData);
 });
 
 app.listen(3000, function () {

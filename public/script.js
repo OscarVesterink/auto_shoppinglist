@@ -66,13 +66,13 @@ function addFinishButton(){
 document.getElementById('footer').addEventListener('click', collectData);
 
 function collectData(){
-    collection = "";
+    let collection = [];
     for(i=0;i<daysOfWeekArray.length;i++){
-        adding = JSON.stringify({
+        adding = {
             "day": document.getElementById('day' + i).textContent,
             "recipe": document.getElementById('selectDay' + i).value
-        });
-        collection += adding;
+        };
+        collection.push(adding);
     }       
     postJSON(collection);
 }
@@ -98,23 +98,29 @@ function postJSON(data){
     // Sending data with the request
     xhr.send(dataDone);
 }
-    // if (document.getElementById('tableWeekSchedule')){
-    //     for(i=0;i<daysOfWeekArray.length;i++){
-            // const fs = require('fs');
 
-            // const dayValue = {
-            //     "day": document.getElementById('day' + i).textContent,
-            //     "value": document.getElementById('selectDay' + i).value,
-            // };
+function getJSON(){
+    let xhr = new XMLHttpRequest();
+    let url = "http://localhost:3000/getData";
 
-            // const data = JSON.stringify(dayValue);
-            // nameFile = document.getElementById('day' + i).textContent + '.json';
-            // fs.writeFile(nameFile, data, (err) => {
-            //     if (err){
-            //         throw err;
-            //     }
-            //     console.log(nameFile, 'is saved');
-            // });
-            // console.log(document.getElementById('day' + i).textContent + document.getElementById('selectDay' + i).value);
-        // }
-    // }
+    xhr.open('GET', url, true);
+
+    //xhr.responseType = 'text';
+
+    xhr.send();
+
+    // the response is the weekschedule
+    xhr.onload = function() {
+        let responseObj = xhr.response;
+        jsonToData = JSON.parse(responseObj);
+        console.log(jsonToData); // console log incoming data
+        showSpecificDay(jsonToData);
+    };
+}
+//Doesn't work, look into!
+function showSpecificDay(jsonToData){
+    for(i=0;i<jsonToData.length;i++){
+        console.log(jsonToData[i].key);
+        console.log(i);
+    }
+}
