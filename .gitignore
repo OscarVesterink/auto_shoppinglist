@@ -1,4 +1,4 @@
-database
-node_modules
-package-lock.json
-package.json
+server/database
+server/node_modules
+server/package-lock.json
+server/package.json

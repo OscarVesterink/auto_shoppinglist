@@ -4,28 +4,37 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Boodschappenlijst</title>
-    <link href="styles.css" rel="stylesheet" />
+    <link href="../CSS/styles.css" rel="stylesheet" />
 </head>
 
 <body>
-    <div class="sidenav">
-    <a href="#">Week</a>
-    <a href="#">Add recipe</a>
+    <div id="mySidenav" class="sidenav">
+    <a class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="../index.html">Week</a>
+    <a href="html/addRecipe.html">Add recipe</a>
+    <a href="html/grocerylist.html">Grocery list</a>
     </div>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
     <div class="container" id="main">
         <table id="weekSchedule">
             <tr>
                 <th>Starting day</th>
-                <th><select id="selectStartOfWeek"><option style="width: max-content" selected disabled hidden>Please select starting day</option></select></th>
+                <th><select id="selectStartOfWeek">
+                <option style="width: max-content" selected disabled hidden>Please select starting day</option></select></th>
             </tr>
-            </table>
-    </div>
-    <div class="container" id="footer">
+        </table>
     </div>
     <div>
-        <button onclick="getJSON()">Click here to get data</button>
+        <button type="button" id="updateDataButton">Click here to get recent data</button>
+        <button type="button" id="updateOldDataButton">Click here to end the current week</button>
     </div>
-    <script src="script.js"></script>
+    <div class="container" id="shoppingList">
+    </div>
+    <div class="container" id="shoppingListOld">
+    </div>
+    <div class="container" id="footer">
+    </div>    
+    <script src="../scripts/main.js"></script>
 </body>
 
 </hmtl>

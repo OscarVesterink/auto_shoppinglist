@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Boodschappenlijst</title>
+    <link href="../CSS/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="mySidenav" class="sidenav">
+    <a class="closebtn" onclick="closeNav()">&times;</a>    
+    <a href="../index.html">Week</a>
+    <a href="../html/addRecipe.html">Add recipe</a>
+    <a href="../html/grocerylist.html">Grocery list</a>
+    </div>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+    <div class="container" id="main">
+        <table class="table" id="globalTable">
+            <tbody id="addRecipeTable">
+                <tr>
+                    <th class="tableCell0">Name recipe</th>
+                    <th class="tableCell0"><input list="listRecipes" id="nameRecipe"></input><datalist id="listRecipes" /></th>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tableCell0" >&nbsp;</td>
+                    <datalist id="dataListIngredients"/>
+                </tr>
+                <tr>
+                    <th class="tableCell0">Type ingredient</th>
+                    <th class="tableCell0">Name ingredient</th>
+                </tr>
+                <tr>
+                    <td class="tableCell0"><select id="typeIngredient0">
+                    <option style="width: max-content" selected disabled hidden>Please select type</option></select></td>
+                    <td class="tableCell0"><select id="addIngredientInput0">
+                    <option style="width: max-content" selected disabled hidden>Please select starting ingredient</option>
+                    <option value="Aardappel">Aardappel</option>
+                    <option value="Pasta">Pasta</option>
+                    <option value="Rijst">Rijst</option>
+                    <option value="Overig">Overig</option>
+                    </select></td>
+                </tr>
+            </tbody>
+        </table>
+            <button type="button" id="addIngredientRow">Add row</button>
+            <button type="button" id="deleteIngredientRow">Delete row</button>
+            <button type="button" id="saveRecipe">Save recipe</button>
+    </div>
+    <div class="container" id="shoppingList">
+    </div>
+    <div class="container" id="footer">
+    </div>
+    <script src="../scripts/addRecipeScript.js"></script>
+</body>
+
+</hmtl>

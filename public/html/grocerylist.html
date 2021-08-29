@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Boodschappenlijst</title>
+    <link href="../CSS/styles.css" rel="stylesheet" />
+    <link href="../CSS/listStyles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="mySidenav" class="sidenav">
+    <a class="closebtn" onclick="closeNav()">&times;</a>     
+    <a href="../index.html">Week</a>
+    <a href="../html/addRecipe.html">Add recipe</a>
+    <a href="../html/grocerylist.html">Grocery list</a>
+    </div>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+    <div class="container" id="main">
+        <select id="typeIngredient">
+        <option style="width: max-content" selected disabled hidden value='0'>Please select type</option></select>
+        <input type="number" value="1" min="1" id="amountIngredient"></input>
+        <input list="dataListIngredients" id="addAdditionalIngredient" ></input>
+    </div>
+    <div class="container" id="shoppingList">
+    </div>
+    <div class="container" id="footer">
+    <button type="button" id="saveList">Save list</button>
+        <datalist id="dataListIngredients"/>
+    </div>
+    <script src="../scripts/grocerylist.js"></script>
+</body>
+
+</hmtl>
